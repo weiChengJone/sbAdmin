@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.bypay.dao.HxUserLevelDao">
+	<resultMap id="hxUserLevel" type="com.bypay.domian.HxUserLevel">
+		<result property="id" column="LEVEL_ID" />
+		<result property="level" column="LEVEL" />
+		<result property="levelName" column="LEVEL_NAME" />
+		<result property="levelRange" column="LEVEL_RANGE" />
+		<result property="memo" column="MEMO" />
+	</resultMap>
+	<insert id="insHxUserLevel" parameterType="com.bypay.domian.HxUserLevel">
+		INSERT INTO
+		HX_USER_LEVEL(LEVEL, LEVEL_NAME, LEVEL_RANGE, MEMO)
+		VALUES(#{level},#{levelName},#{levelRange}*100,#{memo})
+	</insert>
+	<select id="selHxUserLevelCount" resultType="int" parameterType="java.util.Map">
+		SELECT COUNT(*) FROM HX_USER_LEVEL
+		<where>
+			<if test="hxUserLevel.level!=null and hxUserLevel.level!='-1'">
+				AND LEVEL = #{hxUserLevel.level}
+			</if>
+			<if test="hxUserLevel.levelName!=null and hxUserLevel.levelName!=''">
+				AND LEVEL_NAME LIKE '%${hxUserLevel.levelName}%'
+			</if>
+		</where>
+	</select>
+	<select id="selHxUserLevel" resultMap="hxUserLevel"
+		parameterType="java.util.Map">
+		SELECT LEVEL_ID, LEVEL, LEVEL_NAME, FORMAT(LEVEL_RANGE/100, 2) AS
+		LEVEL_RANGE, MEMO FROM HX_USER_LEVEL
+		<where>
+			<if test="hxUserLevel.level!=null and hxUserLevel.level!='-1'">
+				AND LEVEL = #{hxUserLevel.level}
+			</if>
+			<if test="hxUserLevel.levelName!=null and hxUserLevel.levelName!=''">
+				AND LEVEL_NAME LIKE '%${hxUserLevel.levelName}%'
+			</if>
+		</where>
+		limit #{page},#{pageSize}
+	</select>
+	<update id="updHxUserLevel" parameterType="com.bypay.domian.HxUserLevel">
+		UPDATE HX_USER_LEVEL
+		SET LEVEL=#{level}, LEVEL_NAME=#{levelName},
+		LEVEL_RANGE=#{levelRange}*100, MEMO=#{memo}
+		WHERE LEVEL_ID=#{id}
+	</update>
+	<delete id="delHxUserLevel" parameterType="java.lang.String">
+		DELETE FROM
+		HX_USER_LEVEL WHERE LEVEL_ID=#{id}
+	</delete>
+	<select id="queryOneInfo" parameterType="java.lang.String"
+		resultMap="hxUserLevel">
+		SELECT LEVEL_ID, LEVEL, LEVEL_NAME, LEVEL_RANGE/100 AS
+		LEVEL_RANGE, MEMO FROM HX_USER_LEVEL WHERE LEVEL_ID=#{id}
+	</select>
+</mapper>

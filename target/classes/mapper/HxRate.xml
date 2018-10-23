@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.bypay.dao.HxRateDao">
+	<resultMap id="rateInfo" type="com.bypay.domian.HxRate">
+		<id column="RATE_ID" property="rateId" />
+		<result property="rateType" column="RATE_TYPE" />
+		<result property="feeRate" column="FEE_RATE" />
+		<result property="rateDesc" column="RATE_DESC" />
+		<result property="remark" column="REMARK" />
+	</resultMap>
+
+
+	<select id="getALLRate" resultMap="rateInfo">
+		select * from HX_RATE
+	</select>
+
+
+</mapper>

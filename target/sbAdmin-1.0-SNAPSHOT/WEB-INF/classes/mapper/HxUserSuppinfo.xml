@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"  
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.bypay.dao.HxUserSuppinfoDao">
+	<resultMap id="hxUserSuppinfo" type="com.bypay.domian.HxUserSuppinfo">
+		<result property="userId" column="USER_ID" />
+		<result property="userName" column="USER_NAME" />
+		<result property="idcardType" column="IDCARD_TYPE" />
+		<result property="idcardNum" column="IDCARD_NUM" />
+		<result property="address" column="ADDRESS" />
+		<result property="idcardImg" column="IDCARD_IMG" />
+		<result property="idcardImgOpposite" column="IDCARD_IMG_OPPOSITE" />
+		<result property="idcardImgHold" column="IDCARD_IMG_HOLD" />
+		<result property="icon" column="ICON" />
+		<result property="updateCount" column="UPDATE_COUNT" />
+		<result property="value" column="VALUE" />
+	</resultMap>
+	<!-- 查询指定编号的用户补充信息 -->
+	<select id="selectHxUserSuppinfoOne" parameterType="com.bypay.domian.HxUserSuppinfo"
+		resultMap="hxUserSuppinfo">
+		SELECT * FROM HX_USER_SUPPINFO WHERE USER_ID=#{userId}
+	</select>
+	<!-- 修改指定编号的用户补充信息 -->
+	<update id="updateHxUserSuppinfo" parameterType="com.bypay.domian.HxUserSuppinfo">
+		UPDATE HX_USER_SUPPINFO SET USER_ID=#{userId}
+		<if test="updateCount!=null and updateCount!=''">
+			, UPDATE_COUNT=#{updateCount}
+		</if>
+		<if test="value!=null and value!=''">
+			, VALUE=#{value}
+		</if>
+		WHERE USER_ID=#{userId}
+	</update>
+	<!-- 批量修改指定编号的用户补充信息 -->
+	<update id="updateHxUserSuppinfoBatch" parameterType="java.util.List">
+		<foreach collection="list" item="hxUserSuppinfo" index="index"
+			open="" separator=";" close="">
+			UPDATE HX_USER_SUPPINFO SET
+			USER_ID=#{hxUserSuppinfo.userId},VALUE=#{hxUserSuppinfo.value} where
+			USER_ID=#{hxUserSuppinfo.userId}
+		</foreach>
+	</update>
+</mapper>

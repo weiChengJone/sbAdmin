@@ -1,0 +1,15 @@
+D:\workspace\sbAdmin\src\main\java\com\bypay\dao\HxUserLevelDao.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\HxUserSuppinfoService.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\impl\HxRateServiceImpl.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\controller\HxUserController.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\domian\HxUserLevel.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\HxUserLevelService.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\domian\HxUserSuppinfo.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\Application.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\dao\HxUserSuppinfoDao.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\domian\HxRate.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\impl\HxUserSuppinfoServiceImpl.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\config\DubboConfig.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\impl\HxUserLevelServiceImpl.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\service\HxRateService.java
+D:\workspace\sbAdmin\src\main\java\com\bypay\dao\HxRateDao.java
