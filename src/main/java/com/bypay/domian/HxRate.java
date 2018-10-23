@@ -22,6 +22,8 @@ public class HxRate implements Serializable {
 	/**
 	 * 预留字段
 	 */
+	private String testId;
+
 	private String remark;
 	public Integer getRateId() {
 		return rateId;
